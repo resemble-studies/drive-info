@@ -3,18 +3,20 @@
 
 cmake_minimum_required(VERSION 3.1.0)
 
-project("ensemble-drive-info" LANGUAGES CXX C)
+project("ensemble-drive-info" LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+
+include_directories("${CMAKE_CURRENT_LIST_DIR}/inc")
 
 set(ENSEMBLE_DRIVE_INFO_LIB "ensemble-drive-info-lib")
 add_library(${ENSEMBLE_DRIVE_INFO_LIB} STATIC "")
 target_sources(
     ${ENSEMBLE_DRIVE_INFO_LIB}
     PRIVATE
-    "${CMAKE_CURRENT_LIST_DIR}/src/drive-info.cpp"
-    "${CMAKE_CURRENT_LIST_DIR}/src/drive-info.hpp"
+    "${CMAKE_CURRENT_LIST_DIR}/src/ensemble/drive-info.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/inc/ensemble/drive-info.hpp"
 )
 
 if (CMAKE_BUILD_TYPE MATCHES "^[Dd]ebug")
